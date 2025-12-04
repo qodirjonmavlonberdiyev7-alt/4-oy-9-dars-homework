@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast-Food</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- navbar  -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Food</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar  -->
+    <!-- slider  -->
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="image/burger.png" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="image/pitsa.png" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="image/lavash.png" class="d-block w-100" alt="..." />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- slider  -->
+    <!-- add product  -->
+    <div class="container">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary mt-5"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Add food
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Add food
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- form  -->
+              <form action="http://localhost:4001/add_food" method="post">
+                <div class="mb-3">
+                  <label for="title-input" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title-input"
+                    name="title"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="description-input" class="form-label"
+                    >Description</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description-input"
+                    name="description"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="price-input" class="form-label">Price</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="price-input"
+                    name="price"
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </form>
+              <!-- form  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- add product  -->
+    <!-- card  -->
+    <div class="container">
+      <h1 class="mt-5 pt-5">Foods list</h1>
+      <div
+        class="card-box pb-5 mb-5 mt-5 d-flex justify-content-evenly gap-5 flex-wrap"
+      >
+        <% foods.forEach(element => { %>
+        <div class="card" style="width: 18rem">
+          <img
+            src="https://picsum.photos/200/200"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="card-title"><%= element.name %></h4>
+            <p class="card-text"><%= element.description ? element.description.slice(0, 60) + "..." : "" %></p>
+            <p class="card-text mb-0"><%= element.price %>$</p>
+            <p class="card-text mt-0"><%= element.time %></p>
+            <a href="http://localhost:4001/get_one_food/<%= element.id %>" class="btn btn-primary">See more...</a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <!-- card  -->
+
+    <!-- bootstrap  -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

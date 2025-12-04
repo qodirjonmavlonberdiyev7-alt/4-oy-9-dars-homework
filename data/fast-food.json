@@ -1,0 +1,20 @@
+[
+    {
+        "id": "15075d75-da8e-486f-b5aa-360d8690cf2a",
+        "price": "25000 so'm",
+        "description": "Very Delicious",
+        "time": "14:20"
+    },
+    {
+        "id": "83a67502-20c7-4368-99ec-33f1ea101143",
+        "price": "80000 so'm",
+        "description": "Peperoni pitsa",
+        "time": "14:24"
+    },
+    {
+        "id": "ada10e7b-5b65-417b-873a-38ec4920efbb",
+        "price": "22000 so'm",
+        "description": "Very Delicious",
+        "time": "14:25"
+    }
+]
