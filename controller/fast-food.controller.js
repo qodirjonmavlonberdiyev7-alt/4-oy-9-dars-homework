@@ -75,7 +75,7 @@ const updateFood = async (req, res) => {
     });
 
     write_file("fast-food.json", foods);
-    res.status(302).redirect("http://localhost:4001/get_all_products");
+    res.status(302).redirect("http://localhost:4001/get_all_foods");
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -105,9 +105,11 @@ const deleteFood = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: error.message,
-    });
+    })
+    
+    }
   }
-};
+
 
 module.exports = {
   getAllFoods,

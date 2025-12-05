@@ -1,108 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <name><%= foundedFood ? foundedFood.name : "No Product" %></name>
-  <link rel="stylesheet" href="/css/main.css" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="#">Fast-Food</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-        </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <name><%= foundedFood ? foundedFood.name : "No Product" %></name>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Fast-Food</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+<!-- card -->
+    <div class="container">
+      <h1 class="mt-5 pt-5"><%= foundedFood.name %></h1>
+      <div
+        class="card-box pb-5 mb-5 mt-5 d-flex justify-content-evenly gap-5 flex-wrap"
+      >
+        <div class="card" style="width: 80rem">
+          <img
+            src="https://picsum.photos/1000/1000"
+            class="card-img-top"
+            alt="..."
+            style="height: 500px; object-fit: cover"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= foundedFood.name %></h5>
+            <p class="fprice"><%= foundedFood.price %>$</p>
+            <p class="card-text"><%= foundedFood.decription %></p>
+            <p class="card-text2"><%= foundedFood.time %></p>
 
-  <div class="container mt-5 pt-5">
-    <% if (foundedFood) { %>
-    <h1><%= foundedFood.name %></h1>
-    <div class="card mb-5" style="width: 30rem;">
-      <img src="/images/burger.png" class="card-img-top" alt="Burger" style="height: 500px; object-fit: cover;" />
-      <div class="card-body">
-        <h4 class="card-title"><%= foundedFood.name %></h4>
-        <p class="card-text"><%= foundedFood.description %></p>
-        <p class="card-text"><%= foundedFood.price %></p>
-        <p class="card-text"><%= foundedFood.time %></p>
+            <!-- update  -->
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn btn-warning mt-0"
+              data-bs-toggle="modal"
+              data-bs-target="#updateModal"
+            >
+              Update
+            </button>
 
-        <!-- Update Button -->
-        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
-
-        <!-- Update Modal -->
-        <div class="modal fade" id="updateModal" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Update food</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="updateModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                      Update product
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- form  -->
+                    <form
+                      action="http://localhost:4001/update_food/<%= foundedFood.id %>"
+                      method="post"
+                    >
+                      <div class="mb-3">
+                        <label for="name-input" class="form-label">Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name-input"
+                          name="name"
+                          value="<%= foundedFood.name %>"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="description-input" class="form-label"
+                          >Description</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="description-input"
+                          name="description"
+                          value="<%= foundedFood.description %>"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="price-input" class="form-label"
+                          >Price</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="price-input"
+                          name="price"
+                          value="<%= foundedFood.price %>"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="ingredients-input" class="form-label"
+                          >time </label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="time-input"
+                          name="time"
+                          value="<%= foundedFood.time %>"
+                        />
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          Save changes
+                        </button>
+                      </div>
+                    </form>
+                    <!-- form  -->
+                  </div>
+                </div>
               </div>
-              <div class="modal-body">
-                <form action="/update_product/<%= foundedFood.id %>" method="post">
-                  <div class="mb-3">
-                    <label for="title-input" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title-input" name="title" value="<%= foundedFood.name %>" />
+            </div>
+            <!-- update -->
+            <!-- delete -->
+
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
+              Delete
+            </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <form
+                  class="modal-content"
+                  method="post"
+                  action="http://localhost:4001/delete_food/<%= foundedFood.id %>"
+                >
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                      <%= foundedFood.name %>
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
                   </div>
-                  <div class="mb-3">
-                    <label for="description-input" class="form-label">Description</label>
-                    <input type="text" class="form-control" id="description-input" name="description" value="<%= foundedFood.description %>" />
-                  </div>
-                  <div class="mb-3">
-                    <label for="price-input" class="form-label">Price</label>
-                    <input type="text" class="form-control" id="price-input" name="price" value="<%= foundedFood.price %>" />
-                  </div>
+                  <div class="modal-body">Are you agree?</div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Delete.
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
+            <!-- delete -->
           </div>
         </div>
-
-        <!-- Delete Button -->
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-
-        <!-- Delete Modal -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog">
-            <form class="modal-content" method="post" action="/delete_product/<%= foundedFood.id %>">
-              <div class="modal-header">
-                <h5 class="modal-title"><%= foundedFood.name %></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-               Are you sure  Do you want to delete?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Yes, delete</button>
-              </div>
-            </form>
-          </div>
-        </div>
-
       </div>
     </div>
-    <% } else { %>
-      <h2>No fast-food found</h2>
-    <% } %>
-  </div>
+    <!-- card -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
